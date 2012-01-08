@@ -7,7 +7,7 @@ that is similar to Caliburn.Micro but gives you a couple more things into your h
 * An Event Aggregator that allows you to configure many aspects of moving messages from publishers to subscribers
 * An API to create XAML Object trees via code and ways to access and use XAML-based resources
 
-Check out the Sample App for usage guideline. The major difference is that you should include 
+Check out the Sample App for usage guideline. The major difference is that you should include the __ScalBootstrapper__ from the __Scal__-assembly into your App.xaml and then define a class that derives from __ScalConfiguration__. In there you will find an API to further configure your application.
 
   [1]: http://caliburnmicro.codeplex.com
   [2]: https://github.com/structuremap/structuremap
