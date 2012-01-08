@@ -1,0 +1,9 @@
+﻿<Window x:Class="SampleApp.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:dx="clr-namespace:DynamicXaml.MarkupSystem;assembly=DynamicXaml" Title="MainWindow" Height="350" Width="525">
+    <Grid dx:QuickGrid.Rows="2x*">
+        <TextBlock x:Name="Hello"></TextBlock>
+        <ContentControl x:Name="ADate" Grid.Row="1" />
+    </Grid>
+</Window>
