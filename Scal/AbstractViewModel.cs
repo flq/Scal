@@ -4,6 +4,10 @@ using MemBus.Subscribing;
 
 namespace Scal
 {
+
+    /// <summary>
+    /// Brings together implementations of (De)Activate and IAcceptDisposeToken to dispose any subscriptions
+    /// </summary>
     public abstract class AbstractViewModel : PropertyChangedBase, IActivate, IDeactivate, IAcceptDisposeToken
     {
         private IDisposable _disposeToken;

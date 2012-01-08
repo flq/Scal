@@ -2,6 +2,9 @@ using System;
 
 namespace Scal
 {
+    /// <summary>
+    /// Throw this to ensure that 
+    /// </summary>
     public class StartupTerminationException : Exception
     {
         public StartupTerminationException()
