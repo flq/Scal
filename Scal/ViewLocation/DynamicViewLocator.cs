@@ -2,25 +2,27 @@ using System.Windows;
 using DynamicXaml;
 using DynamicXaml.Extensions;
 using Scal.Configuration;
+using StructureMap;
 
 namespace Scal.ViewLocation
 {
     internal class DynamicViewLocator : IViewLocator
     {
         private readonly ModelMatchConfiguration _configuration;
+        private readonly IContainer _container;
         private readonly XamlBuilder _builder;
 
-        public DynamicViewLocator(ModelMatchConfiguration configuration, XamlBuilder builder)
+        public DynamicViewLocator(ModelMatchConfiguration configuration, IContainer container)
         {
             _configuration = configuration;
-            _builder = builder;
+            _container = container;
         }
 
         Maybe<UIElement> IViewLocator.LocateView(object viewModel, DependencyObject visualParent, object context)
         {
             if (!_configuration.Matches(viewModel))
               return Maybe<UIElement>.None;
-            return _configuration.Build(_builder, viewModel).ToMaybe();
+            return _configuration.Build(_container, viewModel).ToMaybe();
         }
     }
 }

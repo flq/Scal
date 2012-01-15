@@ -24,11 +24,12 @@ namespace Scal.Configuration
             return new ModelMatchConfiguration(match);
         }
 
-        public ModelMatchConfiguration ModelsMatching<T>()
+        public ViewLocationConfiguration ModelsMatching<T>(Action<ModelMatchConfiguration> actionOnMatch)
         {
             var modelMatchConfiguration = new ModelMatchConfiguration(o => o.CanBeCastTo<T>());
             Locators.Add(modelMatchConfiguration);
-            return modelMatchConfiguration;
+            actionOnMatch(modelMatchConfiguration);
+            return this;
         }
     }
 }

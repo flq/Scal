@@ -2,6 +2,7 @@ using System;
 using System.Windows;
 using System.Windows.Threading;
 using DynamicXaml;
+using DynamicXaml.ResourcesSystem;
 using MemBus;
 using MemBus.Configurators;
 using MemBus.Subscribing;
@@ -19,6 +20,9 @@ namespace Scal.Bootstrapping
         {
             ForSingletonOf<ViewLocationManagement>().Use<ViewLocationManagement>();
             ForSingletonOf<XamlBuilder>().Use<XamlBuilder>();
+
+            ForSingletonOf<ResourceService>().Use(new ResourceService(new CompositeResourceLoader(model.Assemblies.ToArray())));
+            ForSingletonOf<DataTemplateService>().Use(ctx => new DataTemplateService(ctx.GetInstance<ResourceService>()));
 
             For<Application>().Use(Application.Current);
             Forward<Application, DispatcherObject>();

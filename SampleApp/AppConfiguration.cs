@@ -20,8 +20,8 @@ namespace SampleApp
                 .HandleTheseMessagesOnDispatcher(mi => mi.Name.EndsWith("UiMsg"));
 
             ViewLocation
-                .ModelsMatching<DateTime>()
-                .Use((b, vm) => b.Start<DatePicker>(vm).MinWidthAndHorizontalAlignment(100d,HorizontalAlignment.Left).BindSelectedDate());
+                .ModelsMatching<DateTime>(m => m.Use((b, vm) => b.Start<DatePicker>(vm).StaticStyle("EditableDate").BindSelectedDate()))
+                .ModelsMatching<CustomerNumber>(m => m.FromMatchingDataTemplate());
 
             StartViewModel<MainViewModel>();
         }

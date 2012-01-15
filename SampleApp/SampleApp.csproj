@@ -42,9 +42,9 @@
     <Reference Include="Caliburn.Micro">
       <HintPath>..\lib\Caliburn.Micro.1.2.0\lib\Net40\Caliburn.Micro.dll</HintPath>
     </Reference>
-    <Reference Include="DynamicXaml, Version=0.5.3.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="DynamicXaml, Version=0.5.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DynamicXaml.0.5.3.0\lib\net40-Client\DynamicXaml.dll</HintPath>
+      <HintPath>..\packages\DynamicXaml.0.5.4.0\lib\net40-Client\DynamicXaml.dll</HintPath>
     </Reference>
     <Reference Include="MemBus, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MemBus.1.2.0\lib\net40\MemBus.dll</HintPath>
@@ -65,11 +65,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="MoreResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="AppConfiguration.cs" />
+    <Compile Include="CustomerNumber.cs" />
     <Compile Include="MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
       <SubType>Code</SubType>

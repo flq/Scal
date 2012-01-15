@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:SampleApp="clr-namespace:SampleApp">
+    <Style TargetType="{x:Type DatePicker}" x:Key="EditableDate">
+        <Setter Property="MinWidth" Value="100" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+    </Style>
+    <DataTemplate x:Key="CustomerNumber" DataType="{x:Type SampleApp:CustomerNumber}">
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+            <Label>Customer Number:</Label>
+            <TextBox IsReadOnly="True" Text="{Binding Number}"></TextBox>
+        </StackPanel>
+    </DataTemplate>
+</ResourceDictionary>
