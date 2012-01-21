@@ -21,7 +21,7 @@ namespace Scal.ViewLocation
             var ui = _original(viewModel, visualParent, context);
             if (ui is TextBlock && ((TextBlock)ui).Text.StartsWith("Cannot find view for"))
                 return Maybe<UIElement>.None;
-            return _original(viewModel, visualParent, context).ToMaybe();
+            return ui.ToMaybe();
         }
 
     }

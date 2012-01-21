@@ -16,12 +16,11 @@ namespace Scal.Bootstrapping
         private IContainer _container;
         private readonly AppModel model = new AppModel();
 
-        protected override void OnStartup(object sender, System.Windows.StartupEventArgs e)
+        protected override void OnStartup(object sender, StartupEventArgs e)
         {
             var vmType = model.StartupViewModel;
 
             RunStartupTasks(_container.GetAllInstances<IStartupTask>().OrderBy(st => st.Priority));
-            Application.ShutdownMode = ShutdownMode.OnLastWindowClose;
             DisplayRootViewFor(vmType);
         }
 
@@ -34,13 +33,17 @@ namespace Scal.Bootstrapping
             {
                 throw new ArgumentException("The Scal configuration has not been set. Define one by setting the ScalConfiguration property on the ScalBootstrapper");
             }
+
             var c = (ScalConfiguration)Activator.CreateInstance(configType);
             c.Configure(model);
-            _container = new Container(ce =>
+
+            ObjectFactory.Initialize(ce =>
             {
                 ce.ForSingletonOf<AppModel>().Use(model);
                 ce.AddRegistry(new BootStrapRegistry(model));
             });
+
+            _container = ObjectFactory.Container;
             base.StartRuntime();
         }
 

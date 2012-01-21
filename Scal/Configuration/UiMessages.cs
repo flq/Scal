@@ -24,11 +24,11 @@ namespace Scal.Configuration
         private void DispatchUiMessages(IConfigurablePublishing obj)
         {
             obj.MessageMatch(_predicate).PublishPipeline(
-                new UiMsgDispatcher(ObjectFactory.GetInstance<IDispatchServices>()));
+                new DeferredPublishPipelineMember<UiMsgDispatcher>(ObjectFactory.GetInstance<UiMsgDispatcher>));
         }
 
 
-        private class UiMsgDispatcher : IPublishPipelineMember
+        public class UiMsgDispatcher : IPublishPipelineMember
         {
             private readonly IDispatchServices _svc;
             private readonly SequentialPublisher _seq = new SequentialPublisher();

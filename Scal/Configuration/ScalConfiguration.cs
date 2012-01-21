@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Scal.Configuration
 {
@@ -16,7 +14,8 @@ namespace Scal.Configuration
             model.StartupViewModel = _startViewModel;
             model.SetViewLocators(_viewLoc.Locators);
             model.MemBusSetups = Messaging.GetSetups();
-            model.RegisterHandlePredicate = t => _predicates.Any(f => f(t));
+            model.RegisterHandlePredicate = Messaging.MessagingSubscriberMatcher;
+            model.RegisterMessageHubPredicate = Messaging.MessageHubMatcher;
         }
 
         protected internal void StartViewModel<T>()
@@ -39,13 +38,6 @@ namespace Scal.Configuration
         protected internal MessagingConfiguration Messaging
         {
             get { return _messagingConfig; }
-        }
-
-        private readonly List<Func<Type, bool>> _predicates = new List<Func<Type, bool>>();
-
-        internal void AddMessagingHandlerTypes(Func<Type, bool> predicate)
-        {
-            _predicates.Add(predicate);
         }
     }
 }

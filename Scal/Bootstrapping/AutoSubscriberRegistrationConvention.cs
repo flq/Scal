@@ -21,19 +21,20 @@ namespace Scal.Bootstrapping
     /// in an internal HashSet. If it is a previously requested type, it will be noticed and hence the "Subscribe" procedure will not go forward.
     /// That way it should remain ensured that Singletons only get registered once in Membus.
     /// </summary>
-    public class HandlerRegistrationConvention : IRegistrationConvention
+    public class AutoSubscriberRegistrationConvention : IRegistrationConvention
     {
         private readonly AppModel _appModel;
         private static readonly HashSet<Type> singletonTypes = new HashSet<Type>();
 
-        public HandlerRegistrationConvention(AppModel appModel)
+        public AutoSubscriberRegistrationConvention(AppModel appModel)
         {
             _appModel = appModel;
         }
 
         public void Process(Type type, Registry registry)
         {
-            // !type.IsAbstract && type.Name.EndsWith("ViewModel")
+            if (type.IsAbstract)
+                return;
             if (_appModel.RegisterHandlePredicate(type))
             {
                 registry.For(type).EnrichWith((ctx, obj) =>

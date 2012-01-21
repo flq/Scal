@@ -1,6 +1,7 @@
 using System;
 using System.Windows;
 using System.Windows.Threading;
+using Caliburn.Micro;
 using DynamicXaml;
 using DynamicXaml.ResourcesSystem;
 using MemBus;
@@ -18,6 +19,7 @@ namespace Scal.Bootstrapping
     {
         public BootStrapRegistry(AppModel model)
         {
+            ForSingletonOf<IWindowManager>().Use(new ScalWindowManager());
             ForSingletonOf<ViewLocationManagement>().Use<ViewLocationManagement>();
             ForSingletonOf<XamlBuilder>().Use<XamlBuilder>();
 
@@ -38,7 +40,8 @@ namespace Scal.Bootstrapping
                          model.Assemblies.ForEach(s.Assembly);
                          s.LookForRegistries();
                          s.SingleImplementationsOfInterface();
-                         s.With(new HandlerRegistrationConvention(model));
+                         s.With(new AutoSubscriberRegistrationConvention(model));
+                         s.With(new MessageHubRegistrationConvention(model));
                          s.AddAllTypesOf<IStartupTask>();
                      });
         }

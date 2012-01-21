@@ -23,6 +23,7 @@ namespace Scal
         }
 
         internal Func<Type, bool> RegisterHandlePredicate { get; set; }
+        internal Func<Type, bool> RegisterMessageHubPredicate { get; set; }
 
         public IEnumerable<ISetup<IConfigurableBus>> MemBusSetups { get; internal set; }
 

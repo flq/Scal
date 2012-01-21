@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Scal;
 using Scal.Configuration;
+using DynamicXaml.Extensions;
 
 namespace SampleApp
 {
@@ -12,12 +13,12 @@ namespace SampleApp
         {
             AssemblyPool.AddThisAssembly();
 
-            this
-                .TypesSubscribedToMessaging(t => typeof(AbstractViewModel).IsAssignableFrom(t));
-            
             Messaging
                 .HandleTheseMessagesAsynchronously(mi => mi.Name.EndsWith("TaskMsg"))
-                .HandleTheseMessagesOnDispatcher(mi => mi.Name.EndsWith("UiMsg"));
+                .HandleTheseMessagesOnDispatcher(mi => mi.Name.EndsWith("UiMsg"))
+                .TypesSubscribedToMessaging(t => typeof(AbstractViewModel).IsAssignableFrom(t))
+                .TypesBeingAMessageHub(t => t.CanBeCastTo<IHub>());
+
 
             ViewLocation
                 .ModelsMatching<DateTime>(m => m.Use((b, vm) => b.Start<DatePicker>(vm).StaticStyle("EditableDate").BindSelectedDate()))

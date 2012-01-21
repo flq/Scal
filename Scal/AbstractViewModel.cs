@@ -6,7 +6,7 @@ namespace Scal
 {
 
     /// <summary>
-    /// Brings together implementations of (De)Activate and IAcceptDisposeToken to dispose any subscriptions
+    /// Brings together implementations of CMs (De)Activate and MemBus' IAcceptDisposeToken to dispose any subscriptions
     /// </summary>
     public abstract class AbstractViewModel : PropertyChangedBase, IActivate, IDeactivate, IAcceptDisposeToken
     {
