@@ -20,9 +20,10 @@ namespace Scal.ViewLocation
 
         Maybe<UIElement> IViewLocator.LocateView(object viewModel, DependencyObject visualParent, object context)
         {
-            if (!_configuration.Matches(viewModel))
+            var lCtx = new LocationContext(viewModel, visualParent, context);
+            if (!_configuration.Matches(lCtx))
               return Maybe<UIElement>.None;
-            return _configuration.Build(_container, viewModel).ToMaybe();
+            return _configuration.Build(_container, lCtx).ToMaybe();
         }
     }
 }

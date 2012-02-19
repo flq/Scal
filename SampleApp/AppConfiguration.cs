@@ -1,5 +1,4 @@
 using System;
-using System.Windows;
 using System.Windows.Controls;
 using Scal;
 using Scal.Configuration;
@@ -21,7 +20,7 @@ namespace SampleApp
 
 
             ViewLocation
-                .ModelsMatching<DateTime>(m => m.Use((b, vm) => b.Start<DatePicker>(vm).StaticStyle("EditableDate").BindSelectedDate()))
+                .ModelsMatching<DateTime>(m => m.Use((b, ctx) => b.Start<DatePicker>(ctx.Model).StaticStyle("EditableDate").BindSelectedDate()))
                 .ModelsMatching<CustomerNumber>(m => m.FromMatchingDataTemplate());
 
             StartViewModel<MainViewModel>();

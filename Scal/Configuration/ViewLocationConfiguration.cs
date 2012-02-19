@@ -19,14 +19,14 @@ namespace Scal.Configuration
 
         internal IList<object> Locators { get; set; }
 
-        public ModelMatchConfiguration ModelsMatching(Func<object,bool> match)
+        public ModelMatchConfiguration ModelsMatching(Func<LocationContext,bool> match)
         {
             return new ModelMatchConfiguration(match);
         }
 
         public ViewLocationConfiguration ModelsMatching<T>(Action<ModelMatchConfiguration> actionOnMatch)
         {
-            var modelMatchConfiguration = new ModelMatchConfiguration(o => o.CanBeCastTo<T>());
+            var modelMatchConfiguration = new ModelMatchConfiguration(o => o.Model.CanBeCastTo<T>());
             Locators.Add(modelMatchConfiguration);
             actionOnMatch(modelMatchConfiguration);
             return this;
