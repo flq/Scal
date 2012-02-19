@@ -39,16 +39,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Caliburn.Micro, Version=1.2.0.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Caliburn.Micro.1.3.0\lib\net40\Caliburn.Micro.dll</HintPath>
+    <Reference Include="Caliburn.Micro">
+      <HintPath>..\lib\Caliburn.Micro.1.3.1\lib\net40\Caliburn.Micro.dll</HintPath>
     </Reference>
-    <Reference Include="DynamicXaml, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="DynamicXaml, Version=0.6.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DynamicXaml.0.6.0.0\lib\net40-Client\DynamicXaml.dll</HintPath>
+      <HintPath>..\packages\DynamicXaml.0.6.1.0\lib\net40-Client\DynamicXaml.dll</HintPath>
     </Reference>
-    <Reference Include="MemBus, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MemBus.1.2.0\lib\net40\MemBus.dll</HintPath>
+    <Reference Include="MemBus, Version=1.4.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MemBus.1.4.2\lib\net40\MemBus.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />

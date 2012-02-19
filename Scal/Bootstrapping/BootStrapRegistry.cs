@@ -21,9 +21,14 @@ namespace Scal.Bootstrapping
         {
             ForSingletonOf<IWindowManager>().Use(new ScalWindowManager());
             ForSingletonOf<ViewLocationManagement>().Use<ViewLocationManagement>();
-            ForSingletonOf<XamlBuilder>().Use<XamlBuilder>();
-
             ForSingletonOf<ResourceService>().Use(new ResourceService(new CompositeResourceLoader(model.Assemblies.ToArray())));
+            ForSingletonOf<XamlBuilder>().Use(ctx=>
+            {
+                var b = new XamlBuilder();
+                b.GetResourcesFrom(ctx.GetInstance<ResourceService>());
+                return b;
+            });
+
             ForSingletonOf<DataTemplateService>().Use(ctx => new DataTemplateService(ctx.GetInstance<ResourceService>()));
 
             For<Application>().Use(Application.Current);

@@ -1,11 +1,9 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Scal")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("A combination of StructureMap, Caliburn.Micro and MemBus with DynamicXaml")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("realfiction (Frank Quednau")]
 [assembly: AssemblyProduct("Scal")]

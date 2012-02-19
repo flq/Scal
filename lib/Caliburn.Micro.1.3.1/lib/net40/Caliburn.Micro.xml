@@ -1855,7 +1855,7 @@
         </member>
         <member name="F:Caliburn.Micro.MessageBinder.CustomConverters">
             <summary>
-            Custom converters used by the framework registered by detination type for which the will be selected.
+            Custom converters used by the framework registered by destination type for which they will be selected.
             The converter is passed the existing value to convert and a "context" object.
             </summary>
         </member>

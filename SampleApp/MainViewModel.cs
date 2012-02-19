@@ -22,4 +22,5 @@ namespace SampleApp
             _publisher.Publish(new NiceUiMsg());
         }
     }
+
 }
