@@ -48,6 +48,7 @@ namespace Scal.Bootstrapping
                          s.With(new AutoSubscriberRegistrationConvention(model));
                          s.With(new MessageHubRegistrationConvention(model));
                          s.AddAllTypesOf<IStartupTask>();
+                         s.AddAllTypesOf<IShutdownTask>();
                      });
         }
 

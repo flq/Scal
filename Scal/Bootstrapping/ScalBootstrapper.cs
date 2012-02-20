@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
@@ -22,6 +23,12 @@ namespace Scal.Bootstrapping
 
             RunStartupTasks(_container.GetAllInstances<IStartupTask>().OrderBy(st => st.Priority));
             DisplayRootViewFor(vmType);
+        }
+
+        protected override void OnExit(object sender, EventArgs e)
+        {
+            RunShutdownTasks(_container.GetAllInstances<IShutdownTask>().OrderBy(st => st.Priority));
+            base.OnExit(sender, e);
         }
 
 
@@ -83,7 +90,7 @@ namespace Scal.Bootstrapping
                 {
                     st.Run();
                 }
-                catch (StartupTerminationException x)
+                catch (TaskChainTerminationException x)
                 {
                     model.HandleException(x);
                     Environment.Exit(-1);
@@ -91,6 +98,21 @@ namespace Scal.Bootstrapping
                 catch (Exception x)
                 {
                     model.HandleException(x);
+                }
+            }
+        }
+
+        private static void RunShutdownTasks(IEnumerable<IShutdownTask> tasks)
+        {
+            foreach (var st in tasks)
+            {
+                try
+                {
+                    st.Run();
+                }
+                catch (Exception x)
+                {
+                    Debug.WriteLine(x.FullOutput());
                 }
             }
         }

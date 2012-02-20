@@ -13,4 +13,10 @@ namespace Scal.Bootstrapping
         void Run();
         TaskPriority Priority { get; }
     }
+
+    public interface IShutdownTask
+    {
+        void Run();
+        TaskPriority Priority { get; }
+    }
 }

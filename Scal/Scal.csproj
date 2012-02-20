@@ -93,7 +93,7 @@
     <Compile Include="ViewLocation\DynamicViewLocator.cs" />
     <Compile Include="Services\IDispatchServices.cs" />
     <Compile Include="Services\WpfDispatchService.cs" />
-    <Compile Include="StartupTerminationException.cs" />
+    <Compile Include="TaskChainTerminationException.cs" />
     <Compile Include="ViewLocation\LocationContext.cs" />
     <Compile Include="ViewLocation\ViewLocationManagement.cs" />
     <None Include="packages.config" />
