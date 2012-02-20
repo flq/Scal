@@ -38,6 +38,38 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\SampleApp.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\dotnet\bin\vs2010\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\dotnet\bin\vs2010\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\SampleApp.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\dotnet\bin\vs2010\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\dotnet\bin\vs2010\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Caliburn.Micro">
       <HintPath>..\lib\Caliburn.Micro.1.3.1\lib\net40\Caliburn.Micro.dll</HintPath>

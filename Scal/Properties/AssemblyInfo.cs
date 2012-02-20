@@ -4,7 +4,6 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyTitle("Scal")]
 [assembly: AssemblyDescription("A combination of StructureMap, Caliburn.Micro and MemBus with DynamicXaml")]
-[assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("realfiction (Frank Quednau")]
 [assembly: AssemblyProduct("Scal")]
 [assembly: AssemblyCopyright("Copyright © Frank Quednau 2012")]
