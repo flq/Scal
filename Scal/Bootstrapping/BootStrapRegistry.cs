@@ -19,7 +19,7 @@ namespace Scal.Bootstrapping
     {
         public BootStrapRegistry(AppModel model)
         {
-            ForSingletonOf<IWindowManager>().Use(new ScalWindowManager());
+            ForSingletonOf<IWindowManager>().Use(new WindowManager());
             ForSingletonOf<ViewLocationManagement>().Use<ViewLocationManagement>();
             ForSingletonOf<ResourceService>().Use(new ResourceService(new CompositeResourceLoader(model.Assemblies.ToArray())));
             ForSingletonOf<XamlBuilder>().Use(ctx=>

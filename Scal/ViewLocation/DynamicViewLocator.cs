@@ -10,7 +10,6 @@ namespace Scal.ViewLocation
     {
         private readonly ModelMatchConfiguration _configuration;
         private readonly IContainer _container;
-        private readonly XamlBuilder _builder;
 
         public DynamicViewLocator(ModelMatchConfiguration configuration, IContainer container)
         {
