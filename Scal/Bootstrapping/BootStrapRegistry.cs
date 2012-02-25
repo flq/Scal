@@ -7,6 +7,7 @@ using DynamicXaml.ResourcesSystem;
 using MemBus;
 using MemBus.Configurators;
 using MemBus.Subscribing;
+using Scal.Configuration;
 using Scal.Services;
 using Scal.ViewLocation;
 using StructureMap.Configuration.DSL;
@@ -39,6 +40,8 @@ namespace Scal.Bootstrapping
             For(typeof(IObservable<>)).Use(typeof(MessageObservable<>));
             Forward<IBus, IPublisher>();
             Forward<IBus, ISubscriber>();
+
+            For(typeof(IExceptionHandler)).Use(model.ExceptionHandler);
 
             Scan(s =>
                      {

@@ -78,8 +78,11 @@
     <Compile Include="Bootstrapping\AutoSubscriberRegistrationConvention.cs" />
     <Compile Include="Bootstrapping\IStartupTask.cs" />
     <Compile Include="Bootstrapping\MessageHubRegistrationConvention.cs" />
+    <Compile Include="Configuration\IExceptionHandler.cs" />
     <Compile Include="Extensions\Enumerable.cs" />
     <Compile Include="Extensions\Observable.cs" />
+    <Compile Include="Services\GestureService.cs" />
+    <Compile Include="Services\IGestureService.cs" />
     <Compile Include="ViewLocation\CaliburnMicroLocator.cs" />
     <Compile Include="Configuration\AssemblyScanConfiguration.cs" />
     <Compile Include="Configuration\MessagingConfiguration.cs" />

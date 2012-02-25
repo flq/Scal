@@ -11,7 +11,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <summary>Scal (Structuremap and Caliburn.Micro) - All the glory of CM paired with a very good IOC Container</summary>
     <description>Scal (Structuremap and Caliburn.Micro) combines the Caliburn.Micro framework with the StructureMap DI Container and sprinkles in MemBus as Event aggregator and DynamicXaml as support library for XAML-related tasks. Caliburn.Micro is directly packaged into this, to avoid running its install scripts.</description>
-    <releaseNotes>Additions, pulling in Rx-Main</releaseNotes>
+    <releaseNotes>Config expansion for exception handling and adding more assemblies to be looked up</releaseNotes>
     <copyright>Copyright 2012</copyright>
     <tags>wpf caliburn.micro mvvm composite-ui</tags>
     <dependencies>

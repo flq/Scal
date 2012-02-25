@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 
 namespace Scal.Configuration
 {
@@ -7,6 +8,8 @@ namespace Scal.Configuration
         private readonly AssemblyScanConfiguration _pool = new AssemblyScanConfiguration();
         private readonly ViewLocationConfiguration _viewLoc = new ViewLocationConfiguration();
         private Type _startViewModel;
+        private Type _exceptionhandler;
+        private readonly MessagingConfiguration _messagingConfig = new MessagingConfiguration();
 
         internal void Configure(AppModel model)
         {
@@ -16,11 +19,17 @@ namespace Scal.Configuration
             model.MemBusSetups = Messaging.GetSetups();
             model.RegisterHandlePredicate = Messaging.MessagingSubscriberMatcher;
             model.RegisterMessageHubPredicate = Messaging.MessageHubMatcher;
+            model.SetExceptionHandler(_exceptionhandler ?? typeof(DefaultExceptionHandler));
         }
 
         protected internal void StartViewModel<T>()
         {
             _startViewModel = typeof(T);
+        }
+
+        protected internal void UnhandledExceptionsPassedTo<T>() where T : IExceptionHandler
+        {
+            _exceptionhandler = typeof(T);
         }
 
         protected internal AssemblyScanConfiguration AssemblyPool
@@ -33,11 +42,11 @@ namespace Scal.Configuration
             get { return _viewLoc; }
         }
 
-        private readonly MessagingConfiguration _messagingConfig = new MessagingConfiguration();
-
         protected internal MessagingConfiguration Messaging
         {
             get { return _messagingConfig; }
         }
     }
+
+
 }

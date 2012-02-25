@@ -10,5 +10,6 @@ namespace Scal.Services
         SynchronizationContext SyncContext { get; }
         void EnsureActionOnDispatcher(Action action);
         void QueueOnDispatcher(Action action);
+        void Callback(TimeSpan period, Action action);
     }
 }

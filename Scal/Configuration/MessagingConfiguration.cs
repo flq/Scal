@@ -9,9 +9,14 @@ namespace Scal.Configuration
     {
         private readonly List<ISetup<IConfigurableBus>>_setups = new List<ISetup<IConfigurableBus>>();
 
+
         public void AddConfigurationArtefact(ISetup<IConfigurableBus> setup)
         {
             _setups.Add(setup);
+        }
+
+        internal MessagingConfiguration()
+        {
             MessagingHandlerPredicates = new List<Func<Type, bool>>();
             MessageHubPredicates = new List<Func<Type, bool>>();
         }

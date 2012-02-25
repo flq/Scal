@@ -16,6 +16,10 @@ namespace Scal
         public Type StartupViewModel { get; internal set; }
 
         private IEnumerable<Assembly> _assemblies;
+        private readonly List<object> _viewLocators = new List<object>();
+
+        public IEnumerable<ISetup<IConfigurableBus>> MemBusSetups { get; internal set; }
+
         public IEnumerable<Assembly> Assemblies
         {
             get { return (new [] { typeof(AppModel).Assembly }).Concat(_assemblies); }
@@ -24,10 +28,7 @@ namespace Scal
 
         internal Func<Type, bool> RegisterHandlePredicate { get; set; }
         internal Func<Type, bool> RegisterMessageHubPredicate { get; set; }
-
-        public IEnumerable<ISetup<IConfigurableBus>> MemBusSetups { get; internal set; }
-
-        private readonly List<object> _viewLocators = new List<object>();
+        internal Type ExceptionHandler { get; private set; }
 
         internal IEnumerable<IViewLocator> GetViewLocators(IContainer container)
         {
@@ -43,9 +44,9 @@ namespace Scal
             _viewLocators.AddRange(locators);
         }
 
-        public void HandleException(Exception exception)
+        internal void SetExceptionHandler(Type exceptionHandlerType)
         {
-            MessageBox.Show(exception.FullOutput());
+            ExceptionHandler = exceptionHandlerType;
         }
     }
 }

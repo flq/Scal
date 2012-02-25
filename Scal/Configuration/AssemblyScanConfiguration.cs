@@ -7,7 +7,7 @@ namespace Scal.Configuration
     {
         private readonly List<Assembly> _assemblies = new List<Assembly>();
 
-        public List<Assembly> Assemblies
+        internal List<Assembly> Assemblies
         {
             get { return _assemblies; }
         }
@@ -16,6 +16,23 @@ namespace Scal.Configuration
         {
             Assemblies.Add(Assembly.GetCallingAssembly());
             return this;
+        }
+
+        public AssemblyScanConfiguration AddAssembly(Assembly assembly)
+        {
+            _assemblies.Add(assembly);
+            return this;
+        }
+
+        public AssemblyScanConfiguration AddAssemblies(IEnumerable<Assembly> assemblies)
+        {
+            _assemblies.AddRange(assemblies);
+            return this;
+        }
+
+        public AssemblyScanConfiguration AddAssemblies(params Assembly[] assemblies)
+        {
+            return AddAssemblies((IEnumerable<Assembly>)assemblies);
         }
     }
 }

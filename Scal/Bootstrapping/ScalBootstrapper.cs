@@ -69,7 +69,8 @@ namespace Scal.Bootstrapping
 
         protected override void OnUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
-            model.HandleException(e.Exception);
+            var shouldTerminate = ShouldTerminate(e.Exception);
+            e.Handled = !shouldTerminate;
         }
 
         protected override IEnumerable<Assembly> SelectAssemblies()
@@ -92,12 +93,13 @@ namespace Scal.Bootstrapping
                 }
                 catch (TaskChainTerminationException x)
                 {
-                    model.HandleException(x);
+                    ShouldTerminate(x);
                     Environment.Exit(-1);
                 }
                 catch (Exception x)
                 {
-                    model.HandleException(x);
+                    if (ShouldTerminate(x))
+                        throw;
                 }
             }
         }
@@ -115,6 +117,12 @@ namespace Scal.Bootstrapping
                     Debug.WriteLine(x.FullOutput());
                 }
             }
+        }
+
+        private bool ShouldTerminate(Exception exception)
+        {
+            var h = _container.GetInstance<IExceptionHandler>();
+            return h.ShouldTerminateApp(exception);
         }
     }
 }
