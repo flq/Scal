@@ -18,12 +18,10 @@ namespace Scal.ViewLocation
 
         private UIElement Locate(object viewModel, DependencyObject visualParent, object context)
         {
-            var view = _locators
-                .Select(l => l.LocateView(viewModel, visualParent, context))
-                .MaybeFirst();
+            var lCtx = new LocationContext(viewModel, visualParent, context);
+            var view = _locators.Select(l => l.LocateView(lCtx)).MaybeFirst();
 
-            return view.MustHaveValue(ConstructFailureElement(viewModel));
-            
+            return view.MustHaveValue(ConstructFailureElement(viewModel));            
         }
 
         private static UIElement ConstructFailureElement(object viewModel)

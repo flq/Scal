@@ -1,5 +1,4 @@
 using System.Windows;
-using DynamicXaml;
 using DynamicXaml.Extensions;
 using Scal.Configuration;
 using StructureMap;
@@ -17,9 +16,8 @@ namespace Scal.ViewLocation
             _container = container;
         }
 
-        Maybe<UIElement> IViewLocator.LocateView(object viewModel, DependencyObject visualParent, object context)
+        Maybe<UIElement> IViewLocator.LocateView(LocationContext lCtx)
         {
-            var lCtx = new LocationContext(viewModel, visualParent, context);
             if (!_configuration.Matches(lCtx))
               return Maybe<UIElement>.None;
             return _configuration.Build(_container, lCtx).ToMaybe();

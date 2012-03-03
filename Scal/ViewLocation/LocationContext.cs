@@ -21,11 +21,13 @@ namespace Scal.ViewLocation
 
         public Maybe<object> CaliburnContext { get { return _context.ToMaybe(); } }
 
-        public string ViewName { get { return _visualParent.ToMaybe().Cast<FrameworkElement>().Get(fe => fe.Name).Value; } }
+        public string ViewName { get { return VisualParent.ToMaybe().Cast<FrameworkElement>().Get(fe => fe.Name).Value; } }
+
+        public DependencyObject VisualParent { get { return _visualParent; } }
 
         public Maybe<object> ParentDataContext {get
         {
-            var dep = _visualParent;
+            var dep = VisualParent;
             FrameworkElement fw;
             while (dep != null && (fw = dep as FrameworkElement) != null)
             {

@@ -5,6 +5,6 @@ namespace Scal.ViewLocation
 {
     public interface IViewLocator
     {
-        Maybe<UIElement> LocateView(object viewModel, DependencyObject visualParent, object context = null);
+        Maybe<UIElement> LocateView(LocationContext locationContext);
     }
 }

@@ -106,7 +106,9 @@
     <Compile Include="ViewLocation\ViewLocationManagement.cs" />
     <None Include="packages.config" />
     <AppDesigner Include="Properties\" />
-    <None Include="Scal.nuspec" />
+    <None Include="Scal.nuspec">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
