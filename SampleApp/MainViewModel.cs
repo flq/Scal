@@ -17,6 +17,8 @@ namespace SampleApp
         public DateTime ADate { get { return DateTime.Now; } }
         public CustomerNumber Number { get { return new CustomerNumber() { Number = "ABC 123"}; } }
 
+        public bool IsVisible { get { return true; } }
+
         public void SendMessage()
         {
             _publisher.Publish(new NiceUiMsg());

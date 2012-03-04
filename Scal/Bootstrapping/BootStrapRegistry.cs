@@ -11,7 +11,6 @@ using Scal.Configuration;
 using Scal.Services;
 using Scal.ViewLocation;
 using StructureMap.Configuration.DSL;
-using DynamicXaml.Extensions;
 using System.Linq;
 
 namespace Scal.Bootstrapping
@@ -22,6 +21,7 @@ namespace Scal.Bootstrapping
         {
             ForSingletonOf<IWindowManager>().Use(new WindowManager());
             ForSingletonOf<ViewLocationManagement>().Use<ViewLocationManagement>();
+            ForSingletonOf<ValueConverterManagement>().Use<ValueConverterManagement>();
             ForSingletonOf<ResourceService>().Use(new ResourceService(new CompositeResourceLoader(model.Assemblies.ToArray())));
             ForSingletonOf<XamlBuilder>().Use(ctx=>
             {
@@ -44,15 +44,15 @@ namespace Scal.Bootstrapping
             For(typeof(IExceptionHandler)).Use(model.ExceptionHandler);
 
             Scan(s =>
-                     {
-                         model.Assemblies.ForEach(s.Assembly);
-                         s.LookForRegistries();
-                         s.SingleImplementationsOfInterface();
-                         s.With(new AutoSubscriberRegistrationConvention(model));
-                         s.With(new MessageHubRegistrationConvention(model));
-                         s.AddAllTypesOf<IStartupTask>();
-                         s.AddAllTypesOf<IShutdownTask>();
-                     });
+            {
+                model.Assemblies.ForEach(s.Assembly);
+                s.LookForRegistries();
+                s.SingleImplementationsOfInterface();
+                s.With(new AutoSubscriberRegistrationConvention(model));
+                s.With(new MessageHubRegistrationConvention(model));
+                s.AddAllTypesOf<IStartupTask>();
+                s.AddAllTypesOf<IShutdownTask>();
+            });
         }
 
         private static IBus ConstructBus(AppModel model)

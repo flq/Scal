@@ -41,9 +41,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Caliburn.Micro.1.3.1\lib\net40\Caliburn.Micro.dll</HintPath>
     </Reference>
-    <Reference Include="DynamicXaml, Version=0.6.1.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="DynamicXaml, Version=0.6.5.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DynamicXaml.0.6.1.0\lib\net40-Client\DynamicXaml.dll</HintPath>
+      <HintPath>..\packages\DynamicXaml.0.6.5.0\lib\net40-Client\DynamicXaml.dll</HintPath>
     </Reference>
     <Reference Include="MemBus, Version=1.4.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -73,16 +73,19 @@
     <Compile Include="AbstractViewModel.cs" />
     <Compile Include="AppModel.cs" />
     <Compile Include="Bootstrapping\ActivateMessageHubs.cs" />
-    <Compile Include="Bootstrapping\ActivateViewLocation.cs" />
+    <Compile Include="Bootstrapping\OverrideCaliburnSystems.cs" />
     <Compile Include="Bootstrapping\BootStrapRegistry.cs" />
     <Compile Include="Bootstrapping\AutoSubscriberRegistrationConvention.cs" />
     <Compile Include="Bootstrapping\IStartupTask.cs" />
     <Compile Include="Bootstrapping\MessageHubRegistrationConvention.cs" />
+    <Compile Include="Configuration\ConverterConfiguration.cs" />
     <Compile Include="Configuration\IExceptionHandler.cs" />
     <Compile Include="Extensions\Enumerable.cs" />
     <Compile Include="Extensions\Observable.cs" />
     <Compile Include="Services\GestureService.cs" />
     <Compile Include="Services\IGestureService.cs" />
+    <Compile Include="Services\ScalBinding.cs" />
+    <Compile Include="Services\ValueConverterManagement.cs" />
     <Compile Include="ViewLocation\CaliburnMicroLocator.cs" />
     <Compile Include="Configuration\AssemblyScanConfiguration.cs" />
     <Compile Include="Configuration\MessagingConfiguration.cs" />

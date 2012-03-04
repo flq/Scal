@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows;
 
 namespace Scal.Configuration
 {
@@ -7,9 +6,10 @@ namespace Scal.Configuration
     {
         private readonly AssemblyScanConfiguration _pool = new AssemblyScanConfiguration();
         private readonly ViewLocationConfiguration _viewLoc = new ViewLocationConfiguration();
+        private readonly MessagingConfiguration _messagingConfig = new MessagingConfiguration();
+        private readonly ConverterConfiguration _converterConfig = new ConverterConfiguration();
         private Type _startViewModel;
         private Type _exceptionhandler;
-        private readonly MessagingConfiguration _messagingConfig = new MessagingConfiguration();
 
         internal void Configure(AppModel model)
         {
@@ -20,6 +20,7 @@ namespace Scal.Configuration
             model.RegisterHandlePredicate = Messaging.MessagingSubscriberMatcher;
             model.RegisterMessageHubPredicate = Messaging.MessageHubMatcher;
             model.SetExceptionHandler(_exceptionhandler ?? typeof(DefaultExceptionHandler));
+            model.AddConverters(_converterConfig);
         }
 
         protected internal void StartViewModel<T>()
@@ -46,7 +47,10 @@ namespace Scal.Configuration
         {
             get { return _messagingConfig; }
         }
+
+        protected internal ConverterConfiguration Converters
+        {
+            get { return _converterConfig; }
+        }
     }
-
-
 }

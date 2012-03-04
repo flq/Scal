@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
 using System.Windows;
+using System.Windows.Data;
 using DynamicXaml.Extensions;
 using MemBus.Setup;
 using Scal.Configuration;
@@ -29,6 +30,7 @@ namespace Scal
         internal Func<Type, bool> RegisterHandlePredicate { get; set; }
         internal Func<Type, bool> RegisterMessageHubPredicate { get; set; }
         internal Type ExceptionHandler { get; private set; }
+        internal IEnumerable<Tuple<Type, Type, IValueConverter>> Converters { get; private set; }
 
         internal IEnumerable<IViewLocator> GetViewLocators(IContainer container)
         {
@@ -47,6 +49,11 @@ namespace Scal
         internal void SetExceptionHandler(Type exceptionHandlerType)
         {
             ExceptionHandler = exceptionHandlerType;
+        }
+
+        internal void AddConverters(IEnumerable<Tuple<Type, Type, IValueConverter>> converters)
+        {
+            Converters = converters;
         }
     }
 }

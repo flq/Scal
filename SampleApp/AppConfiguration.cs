@@ -1,4 +1,5 @@
 using System;
+using System.Windows;
 using System.Windows.Controls;
 using Scal;
 using Scal.Configuration;
@@ -18,6 +19,7 @@ namespace SampleApp
                 .TypesSubscribedToMessaging(t => typeof(AbstractViewModel).IsAssignableFrom(t))
                 .TypesBeingAMessageHub(t => t.CanBeCastTo<IHub>());
 
+            Converters.Add<bool, Visibility, BooleanToVisibilityConverter>();
 
             ViewLocation
                 .ModelsMatching<DateTime>(m => m.Use((b, ctx) => b.Start<DatePicker>(ctx.Model).StaticStyle("EditableDate").BindSelectedDate()))
