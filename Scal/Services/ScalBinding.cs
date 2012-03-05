@@ -40,40 +40,52 @@ namespace Scal.Services
             var bindableProperty = (DependencyProperty)pvt.TargetProperty;
 
             new HandleBinding(fw, bindableProperty, Path);
-
             return bindableProperty.DefaultMetadata.DefaultValue;
         }
 
+        /// <summary>
+        /// Why the code looks like it does:
+        /// - The DataContext is not available in ProvideValue of Markupextension
+        /// - Handling the ContextChange event fails when you try to set up the binding, hence usage of the load event
+        /// </summary>
         private class HandleBinding
         {
-            private readonly FrameworkElement _target;
+            private readonly FrameworkElement _element;
             private readonly DependencyProperty _bindableProperty;
             private readonly string _path;
 
-            public HandleBinding(FrameworkElement target, DependencyProperty bindableProperty, string path)
+            public HandleBinding(FrameworkElement element, DependencyProperty bindableProperty, string path)
             {
-                _target = target;
+                _element = element;
                 _bindableProperty = bindableProperty;
                 _path = path;
-                _target.DataContextChanged += HandleCtxChange;
+                _element.Loaded += HandleLoaded;
             }
 
-            private void HandleCtxChange(object sender, DependencyPropertyChangedEventArgs e)
+            private void HandleLoaded(object sender, RoutedEventArgs e)
             {
                 try
                 {
-                    if (e.NewValue == null)
-                        return;
-                    var property = e.NewValue.GetType().GetProperty(_path);
-                    var viewModelType = property.PropertyType;
+                    if (_element.DataContext == null) return;
                     
-                    // CM right now doesn't use anything from the convention
-                    // which is why we pass null.
-                    ConventionManager.SetBinding(viewModelType, _path, property, _target, null, _bindableProperty);
+
+                    var property = _element.DataContext.GetType().GetProperty(_path);
+                    var viewModelType = property.PropertyType;
+
+                    // The code is a copy of 
+                    // ConventionManager.SetBinding(viewModelType, _path, property, _element, null, _bindableProperty);
+                    var b = new Binding(_path);
+                    ConventionManager.ApplyBindingMode(b, property);
+                    ConventionManager.ApplyValueConverter(b, _bindableProperty, property);
+                    ConventionManager.ApplyStringFormat(b, null, property);
+                    ConventionManager.ApplyValidation(b, viewModelType, property);
+                    ConventionManager.ApplyUpdateSourceTrigger(_bindableProperty, _element, b, property);
+
+                    BindingOperations.SetBinding(_element, _bindableProperty, b);
                 }
                 finally
                 {
-                    _target.DataContextChanged -= HandleCtxChange;
+                    _element.Loaded -= HandleLoaded;
                 }
             }
         }

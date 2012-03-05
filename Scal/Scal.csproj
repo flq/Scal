@@ -84,6 +84,7 @@
     <Compile Include="Extensions\Observable.cs" />
     <Compile Include="Services\GestureService.cs" />
     <Compile Include="Services\IGestureService.cs" />
+    <Compile Include="Services\ProgramArguments.cs" />
     <Compile Include="Services\ScalBinding.cs" />
     <Compile Include="Services\ValueConverterManagement.cs" />
     <Compile Include="ViewLocation\CaliburnMicroLocator.cs" />

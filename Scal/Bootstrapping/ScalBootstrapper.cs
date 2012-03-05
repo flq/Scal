@@ -6,9 +6,10 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Threading;
 using Caliburn.Micro;
+using DynamicXaml.Extensions;
 using Scal.Configuration;
+using Scal.Services;
 using StructureMap;
-using StructureMap.TypeRules;
 
 namespace Scal.Bootstrapping
 {
@@ -19,8 +20,8 @@ namespace Scal.Bootstrapping
 
         protected override void OnStartup(object sender, StartupEventArgs e)
         {
+            _container.Configure(ce => ce.ForSingletonOf<ProgramArguments>().Use(new ProgramArguments(e.Args)));
             var vmType = model.StartupViewModel;
-
             RunStartupTasks(_container.GetAllInstances<IStartupTask>().OrderBy(st => st.Priority));
             DisplayRootViewFor(vmType);
         }
