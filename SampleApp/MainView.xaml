@@ -12,5 +12,6 @@
         <ContentControl x:Name="Number" Grid.Row="2" />
         <Button x:Name="SendMessage" Grid.Row="0" Grid.Column="1">Send Message</Button>
         <TextBlock Grid.Column="1" Grid.Row="1" x:Name="TheArgs" />
+        <Image Grid.Row="2" Grid.Column="1" Source="{Binding Image}" />
     </Grid>
 </Window>

@@ -1,4 +1,8 @@
 using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using DynamicXaml.MarkupSystem;
 using MemBus;
 
 namespace Scal.Configuration
@@ -41,6 +45,14 @@ namespace Scal.Configuration
         public static MessagingConfiguration HandleTheseMessagesOnDispatcher(this MessagingConfiguration config, Func<MessageInfo, bool> predicate)
         {
             config.AddConfigurationArtefact(new UiMessages(predicate));
+            return config;
+        }
+
+        public static ConverterConfiguration ApplyDefaults(this ConverterConfiguration config)
+        {
+            config
+                .Add<bool, Visibility, BooleanToVisibilityConverter>()
+                .Add<string, ImageSource, PathToImageSourceConverter>();
             return config;
         }
     }

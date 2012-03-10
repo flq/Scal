@@ -8,7 +8,7 @@ namespace Scal.Configuration
     public class ConverterConfiguration : IEnumerable<Tuple<Type,Type,IValueConverter>>
     {
 
-        private List<Tuple<Type, Type, IValueConverter>> _converters = new List<Tuple<Type, Type, IValueConverter>>();
+        private readonly List<Tuple<Type, Type, IValueConverter>> _converters = new List<Tuple<Type, Type, IValueConverter>>();
 
         /// <summary>
         /// Add a converter for Binding
