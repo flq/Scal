@@ -1,3 +1,4 @@
+using System.Reflection;
 using System.Windows;
 using System.Windows.Media;
 using DynamicXaml.Extensions;
@@ -25,17 +26,28 @@ namespace Scal.ViewLocation
 
         public DependencyObject VisualParent { get { return _visualParent; } }
 
-        public Maybe<object> ParentDataContext {get
+        public Maybe<object> ParentDataContext
         {
-            var dep = VisualParent;
-            FrameworkElement fw;
-            while (dep != null && (fw = dep as FrameworkElement) != null)
+            get
             {
-                if (fw.DataContext != null && !fw.DataContext.Equals(_viewModel))
-                    return fw.DataContext.ToMaybe();
-                dep = VisualTreeHelper.GetParent(dep);
+                var dep = VisualParent;
+                FrameworkElement fw;
+                while (dep != null && (fw = dep as FrameworkElement) != null)
+                {
+                    if (fw.DataContext != null && !fw.DataContext.Equals(_viewModel))
+                        return fw.DataContext.ToMaybe();
+                    dep = VisualTreeHelper.GetParent(dep);
+                }
+                return Maybe<object>.None;
             }
-            return Maybe<object>.None;
-        }}
+        }
+
+        public Maybe<PropertyInfo> UnderlyingProperty
+        {
+            get
+            {
+                return ParentDataContext.Get(o => o.GetType().GetProperty(ViewName));
+            }
+        }
     }
 }

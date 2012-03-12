@@ -1,0 +1,11 @@
+﻿<GroupBox x:Class="SampleApp.OptionGroup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Header="{Binding GroupName}">
+    <ItemsControl ItemsSource="{Binding}" Margin="5">
+        <ItemsControl.ItemTemplate>
+            <DataTemplate>
+                <RadioButton Margin="0,2" IsChecked="{Binding IsChecked}" Content="{Binding Content}" />
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
+    </ItemsControl>
+</GroupBox>

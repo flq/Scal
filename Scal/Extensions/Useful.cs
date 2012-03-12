@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Text;
 using Caliburn.Micro;
+using System.Linq;
 
 namespace Scal
 {
@@ -52,6 +53,21 @@ namespace Scal
                 x = x.InnerException;
             }
             return sb.ToString();
-        } 
+        }
+
+        public static string PascalToWhitespace(this string input)
+        {
+            if (string.IsNullOrEmpty(input))
+                return input;
+            var b = new StringBuilder();
+            b.Append(input.First());
+            foreach (var ch in input.Skip(1))
+            {
+                if (char.IsUpper(ch))
+                    b.Append(" ");
+                b.Append(ch);
+            }
+            return b.ToString();
+        }
     }
 }

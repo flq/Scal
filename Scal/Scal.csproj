@@ -82,6 +82,7 @@
     <Compile Include="Configuration\IExceptionHandler.cs" />
     <Compile Include="Extensions\Enumerable.cs" />
     <Compile Include="Extensions\Observable.cs" />
+    <Compile Include="Services\DataContextOverride.cs" />
     <Compile Include="Services\GestureService.cs" />
     <Compile Include="Services\IGestureService.cs" />
     <Compile Include="Services\ProgramArguments.cs" />

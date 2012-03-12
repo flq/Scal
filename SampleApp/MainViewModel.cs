@@ -25,8 +25,7 @@ namespace SampleApp
 
         public DateTime ADate { get { return DateTime.Now; } }
         public CustomerNumber Number { get { return new CustomerNumber { Number = "ABC 123"}; } }
-
-        public string Image { get { return "/resources/that-face.jpg"; } }
+        public MaritalStatus Status { get; set; }
 
         public bool IsVisible
         {
@@ -48,6 +47,14 @@ namespace SampleApp
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+    }
+
+    public enum MaritalStatus
+    {
+        Single,
+        Married,
+        Widowed,
+        PolygamRelationship
     }
 
 }

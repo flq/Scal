@@ -22,7 +22,8 @@ namespace SampleApp
 
             ViewLocation
                 .ModelsMatching<DateTime>(m => m.Use((b, ctx) => b.Start<DatePicker>(ctx.Model).StaticStyle("EditableDate").BindSelectedDate()))
-                .ModelsMatching<CustomerNumber>(m => m.FromMatchingDataTemplate());
+                .ModelsMatching<CustomerNumber>(m => m.FromMatchingDataTemplate())
+                .AddLocator<EnumAsGroupBoxViews>();
 
             StartViewModel<MainViewModel>();
         }
