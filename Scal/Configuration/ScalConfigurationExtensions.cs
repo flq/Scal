@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using DynamicXaml.MarkupSystem;
 using MemBus;
+using MemBus.Subscribing;
 
 namespace Scal.Configuration
 {
@@ -30,6 +31,16 @@ namespace Scal.Configuration
         }
 
         /// <summary>
+        /// By default, methods named "Handle" are taken as subscriptions. Override this behavior
+        /// to your liking
+        /// </summary>
+        public static MessagingConfiguration SpecifyFlexibleSubscriptionRules(this MessagingConfiguration config, Action<FlexibleSubscribeAdapter> subscribe)
+        {
+            config.SubscribeAdapterConfig = subscribe;
+            return config;
+        }
+
+        /// <summary>
         /// Messages that match the predicate will be published without blocking te publisher
         /// </summary>
         public static MessagingConfiguration HandleTheseMessagesAsynchronously(this MessagingConfiguration config, Func<MessageInfo, bool> predicate)
@@ -48,6 +59,9 @@ namespace Scal.Configuration
             return config;
         }
 
+        /// <summary>
+        /// Adds some default converters
+        /// </summary>
         public static ConverterConfiguration ApplyDefaults(this ConverterConfiguration config)
         {
             config

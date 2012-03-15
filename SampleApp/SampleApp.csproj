@@ -78,9 +78,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\DynamicXaml.0.6.6.0\lib\net40-Client\DynamicXaml.dll</HintPath>
     </Reference>
-    <Reference Include="MemBus, Version=1.4.2.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="MemBus, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\MemBus.1.4.2\lib\net40\MemBus.dll</HintPath>
+      <HintPath>..\packages\MemBus.1.5.0\lib\net40\MemBus.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
@@ -110,6 +110,7 @@
     <Compile Include="CustomerNumber.cs" />
     <Compile Include="EnumAsGroupBoxViews.cs" />
     <Compile Include="FunHub.cs" />
+    <Compile Include="IController.cs" />
     <Compile Include="MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
       <SubType>Code</SubType>

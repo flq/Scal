@@ -45,9 +45,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\DynamicXaml.0.6.6.0\lib\net40-Client\DynamicXaml.dll</HintPath>
     </Reference>
-    <Reference Include="MemBus, Version=1.4.2.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="MemBus, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\MemBus.1.4.2\lib\net40\MemBus.dll</HintPath>
+      <HintPath>..\packages\MemBus.1.5.0\lib\net40\MemBus.dll</HintPath>
     </Reference>
     <Reference Include="StructureMap">
       <HintPath>..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
@@ -88,6 +88,7 @@
     <Compile Include="Services\ProgramArguments.cs" />
     <Compile Include="Services\ScalBinding.cs" />
     <Compile Include="Services\ValueConverterManagement.cs" />
+    <Compile Include="Services\ViewModelTarget.cs" />
     <Compile Include="ViewLocation\CaliburnMicroLocator.cs" />
     <Compile Include="Configuration\AssemblyScanConfiguration.cs" />
     <Compile Include="Configuration\MessagingConfiguration.cs" />

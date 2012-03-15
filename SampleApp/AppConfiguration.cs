@@ -16,7 +16,9 @@ namespace SampleApp
                 .HandleTheseMessagesAsynchronously(mi => mi.Name.EndsWith("TaskMsg"))
                 .HandleTheseMessagesOnDispatcher(mi => mi.Name.EndsWith("UiMsg"))
                 .TypesSubscribedToMessaging(t => typeof(AbstractViewModel).IsAssignableFrom(t))
-                .TypesBeingAMessageHub(t => t.CanBeCastTo<IHub>());
+                .SpecifyFlexibleSubscriptionRules(a => a.ByMethodName("Handle").PublishMethods("Route"))
+                .TypesBeingAMessageHub(t => t.CanBeCastTo<IHub>())
+                .TypesBeingAMessageHub(t => t.CanBeCastTo<IController>());
 
             Converters.ApplyDefaults();
 

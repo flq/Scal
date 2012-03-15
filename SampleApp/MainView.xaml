@@ -15,5 +15,6 @@
         <Button x:Name="SendMessage" Grid.Row="0" Grid.Column="1">Send Message</Button>
         <TextBlock Grid.Column="1" Grid.Row="1" x:Name="TheArgs" />
         <ContentControl x:Name="Status" Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" />
+        <ContentControl svc:ViewModelTarget.Id="infos" Grid.Row="3" />
     </Grid>
 </Window>

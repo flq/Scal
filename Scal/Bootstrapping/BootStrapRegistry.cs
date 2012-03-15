@@ -57,9 +57,7 @@ namespace Scal.Bootstrapping
 
         private static IBus ConstructBus(AppModel model)
         {
-            var setup =
-                BusSetup.StartWith<Conservative>()
-                .Apply<FlexibleSubscribeAdapter>(c => c.ByMethodName("Handle"));
+            var setup = BusSetup.StartWith<Conservative>();
             setup.Apply(model.MemBusSetups.ToArray());
             return setup.Construct();
         }
