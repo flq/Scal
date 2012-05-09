@@ -11,20 +11,21 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <summary>Scal (Structuremap and Caliburn.Micro) - All the glory of CM paired with a very good IOC Container</summary>
     <description>Scal (Structuremap and Caliburn.Micro) combines the Caliburn.Micro framework with the StructureMap DI Container and sprinkles in MemBus as Event aggregator and DynamicXaml as support library for XAML-related tasks. Caliburn.Micro is directly packaged into this, to avoid running its install scripts.</description>
-    <releaseNotes>Config expansion for exception handling and adding more assemblies to be looked up</releaseNotes>
+    <releaseNotes>Removed dependency to StructureMap, which is now included, as it is built from my own fork in order to support client profile</releaseNotes>
     <copyright>Copyright 2012</copyright>
     <tags>wpf caliburn.micro mvvm composite-ui</tags>
     <dependencies>
-        <dependency id="StructureMap" version="2.6.3" />
-        <dependency id="MemBus" version="1.5.0" />
-        <dependency id="DynamicXaml" version="0.6.5" />
+        <dependency id="MemBus" version="1.5.2" />
+        <dependency id="DynamicXaml" version="0.6.6" />
         <dependency id="Rx-Main" version="1.0.11226" />
     </dependencies>
   </metadata>
     <files>
-        <file src="bin\Release\Caliburn.Micro.dll" target="lib\net40" />
-        <file src="bin\Release\Caliburn.Micro.xml" target="lib\net40" />
-        <file src="bin\Release\System.Windows.Interactivity.dll" target="lib\net40" />
-        <file src="bin\Release\System.Windows.Interactivity.xml" target="lib\net40" />
+        <file src="bin\Release\Caliburn.Micro.dll" target="lib\net40-client" />
+        <file src="bin\Release\Caliburn.Micro.xml" target="lib\net40-client" />
+        <file src="bin\Release\System.Windows.Interactivity.dll" target="lib\net40-client" />
+        <file src="bin\Release\System.Windows.Interactivity.xml" target="lib\net40-client" />
+        <file src="bin\Release\StructureMap.dll" target="lib\net40-client" />
+        <file src="bin\Release\StructureMap.xml" target="lib\net40-client" />
     </files>
 </package>

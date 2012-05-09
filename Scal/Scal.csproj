@@ -11,8 +11,7 @@
     <RootNamespace>Scal</RootNamespace>
     <AssemblyName>Scal</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -45,12 +44,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\DynamicXaml.0.6.6.0\lib\net40-Client\DynamicXaml.dll</HintPath>
     </Reference>
-    <Reference Include="MemBus, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="MemBus, Version=1.5.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\MemBus.1.5.0\lib\net40\MemBus.dll</HintPath>
+      <HintPath>..\packages\MemBus.1.5.2\lib\net40-client\MemBus.dll</HintPath>
     </Reference>
-    <Reference Include="StructureMap">
-      <HintPath>..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
+    <Reference Include="StructureMap, Version=2.6.3.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Reactive, Version=1.0.10621.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
